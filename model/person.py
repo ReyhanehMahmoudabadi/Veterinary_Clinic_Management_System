@@ -1,0 +1,74 @@
+from tools.validation import *
+
+class Person:
+    def __init__(self, name, family, national_id, phone, email=None):
+        self.name = name
+        self.family = family
+        self.national_id = national_id
+        self.phone = phone
+        self.email = email
+
+    # -------------------------------------
+    # Name Property
+    @property
+    def name(self):
+        return self.__name
+
+    @name.setter
+    def name(self, name):
+        Validator.name_validator(name)
+        self.__name = name
+
+    # -------------------------------------
+    # Family Property
+    @property
+    def family(self):
+        return self.__family
+
+    @family.setter
+    def family(self, family):
+        Validator.family_validator(family)
+        self.__family = family
+
+    # -------------------------------------
+    # National ID Property
+    @property
+    def national_id(self):
+        return self.__national_id
+
+    @national_id.setter
+    def national_id(self, national_id):
+        Validator.national_id_validator(national_id)
+        self.__national_id = national_id
+
+    # -------------------------------------
+    # Phone Property
+    @property
+    def phone(self):
+        return self.__phone
+
+    @phone.setter
+    def phone(self, phone):
+        Validator.phone_validator(phone)
+        self.__phone = phone
+
+    # -------------------------------------
+    # Email Property
+    @property
+    def email(self):
+        return self.__email
+
+    @email.setter
+    def email(self, email):
+        Validator.email_validator(email)
+        self.__email = email
+
+    # -------------------------------------
+    # Return Person Information
+    def __repr__(self):
+        return f"Person ( name = {self.name} , family = {self.family} , national_id = {self.national_id} )"
+
+    # -------------------------------------
+    # Convert Person Data to Tuple
+    def to_tuple(self):
+        return self.name, self.family, self.national_id, self.phone, self.email
