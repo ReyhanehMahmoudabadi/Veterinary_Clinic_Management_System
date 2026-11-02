@@ -66,7 +66,11 @@ class Person:
     # -------------------------------------
     # Return Person Information
     def __repr__(self):
-        return f"Person ( name = {self.name} , family = {self.family} , national_id = {self.national_id} )"
+        return (f"Person ( name = {self.name} ,"
+                f" family = {self.family} ,"
+                f" national_id = {self.national_id} ) ,"
+                f" phone = {self.phone} ,"
+                f" email = {self.email})")
 
     # -------------------------------------
     # Convert Person Data to Tuple
