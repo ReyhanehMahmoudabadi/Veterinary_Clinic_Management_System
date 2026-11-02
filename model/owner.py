@@ -34,13 +34,9 @@ class Owner(Person):
     # --------------------------------------
     # Return owner information as a formatted string
     def __repr__(self):
-        return (f"Owner (name = {self.name}, "
-                f"family = {self.family}, "
-                f"national_id = {self.national_id}, "
-                f"phone = {self.phone}, "
-                f"email = {self.email}, "
-                f"owner_id = {self.owner_id}, "
-                f"address = {self.address})")
+        person_info = super().__repr__()
+        return f"{person_info} | Owner ( owner_id = {self.owner_id} )"
+
     # --------------------------------------
     # Convert owner information to a tuple
     def to_tuple(self):
