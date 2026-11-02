@@ -57,6 +57,30 @@ class Validator:
     # Validate address
     @staticmethod
     def address_validator(address):
-        if not isinstance(address, str) or not re.match(r"^[a-zA-Z0-9آ-ی\s،,./#\-]+$",
-                                                        address) or address.strip() == "":
+        if (not isinstance(address, str) or
+                not re.match(r"^[a-zA-Z0-9آ-ی\s،,./#\-]+$", address) or
+                address.strip() == ""):
             raise ValueError("Invalid Address!")
+
+    # --------------------------------------------------------------------------------------------
+    # Validate vet ID
+    @staticmethod
+    def vet_id_validator(vet_id):
+        if not isinstance(vet_id, int) or not vet_id > 0:
+            raise ValueError("Invalid Vet Id!")
+
+    # --------------------------------------------------------------------------------------------
+    # Validate specialization
+    @staticmethod
+    def specialization_validator(specialization):
+        if (not isinstance(specialization, str) or
+                not re.match(r"^[a-zA-Z ]{2,100}$", specialization) or
+                specialization.strip() == ""):
+            raise ValueError("Invalid Specialization!")
+
+    # --------------------------------------------------------------------------------------------
+    # Validate veterinary license number
+    @staticmethod
+    def license_number_validator(license_number):
+        if not isinstance(license_number, str) or not re.match(r"^[0-9]{4,20}$", license_number):
+            raise ValueError("Invalid License Number!")
