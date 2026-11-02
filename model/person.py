@@ -69,7 +69,7 @@ class Person:
     def __repr__(self):
         return (f"Person ( name = {self.name} ,"
                 f" family = {self.family} ,"
-                f" national_id = {self.national_id} ) ,"
+                f" national_id = {self.national_id} ,"
                 f" phone = {self.phone} ,"
                 f" email = {self.email})")
 
