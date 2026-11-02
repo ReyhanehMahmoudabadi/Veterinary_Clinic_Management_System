@@ -33,7 +33,7 @@ class Owner(Person):
 
     # --------------------------------------
     # Return owner information as a formatted string
-    def __str__(self):
+    def __repr__(self):
         return (f"Owner (name = {self.name}, "
                 f"family = {self.family}, "
                 f"national_id = {self.national_id}, "
