@@ -1,5 +1,6 @@
 from tools.validation import *
 
+
 class Person:
     def __init__(self, name, family, national_id, phone, email=None):
         self.name = name
