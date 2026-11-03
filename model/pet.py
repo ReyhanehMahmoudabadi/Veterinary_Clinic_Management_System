@@ -17,7 +17,6 @@ class Pet:
 
     # --------------------------------------------------
     # Properties (Getters and Setters)
-
     @property
     def pet_id(self):
         return self.__pet_id
