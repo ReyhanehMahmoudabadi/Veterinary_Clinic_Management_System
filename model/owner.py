@@ -10,6 +10,7 @@ class Owner(Person):
         self.owner_id = owner_id
         self.address = address
 
+    # --------------------------------------
     # Get and validate owner ID
     @property
     def owner_id(self):
