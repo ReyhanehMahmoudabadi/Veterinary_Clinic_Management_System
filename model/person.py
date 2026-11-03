@@ -1,7 +1,9 @@
-from tools.validation import *
+from tools.validation import Validator
 
-
+# Person Class
 class Person:
+
+    # Initialize person attributes
     def __init__(self, name, family, national_id, phone, email=None):
         self.name = name
         self.family = family
@@ -10,7 +12,7 @@ class Person:
         self.email = email
 
     # -------------------------------------
-    # Name Property
+    # Properties (Getters and Setters)
     @property
     def name(self):
         return self.__name
@@ -20,8 +22,7 @@ class Person:
         Validator.name_validator(name)
         self.__name = name
 
-    # -------------------------------------
-    # Family Property
+
     @property
     def family(self):
         return self.__family
@@ -31,8 +32,7 @@ class Person:
         Validator.family_validator(family)
         self.__family = family
 
-    # -------------------------------------
-    # National ID Property
+
     @property
     def national_id(self):
         return self.__national_id
@@ -42,8 +42,7 @@ class Person:
         Validator.national_id_validator(national_id)
         self.__national_id = national_id
 
-    # -------------------------------------
-    # Phone Property
+
     @property
     def phone(self):
         return self.__phone
@@ -53,8 +52,7 @@ class Person:
         Validator.phone_validator(phone)
         self.__phone = phone
 
-    # -------------------------------------
-    # Email Property
+
     @property
     def email(self):
         return self.__email
@@ -65,7 +63,7 @@ class Person:
         self.__email = email
 
     # -------------------------------------
-    # Return Person Information
+    # Return person information
     def __repr__(self):
         return (f"Person ( name = {self.name} ,"
                 f" family = {self.family} ,"
@@ -74,6 +72,6 @@ class Person:
                 f" email = {self.email})")
 
     # -------------------------------------
-    # Convert Person Data to Tuple
+    # Convert person information to tuple
     def to_tuple(self):
         return self.name, self.family, self.national_id, self.phone, self.email
