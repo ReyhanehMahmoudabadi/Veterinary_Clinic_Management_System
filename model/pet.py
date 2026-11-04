@@ -63,8 +63,7 @@ class Pet:
 
     @gender.setter
     def gender(self, gender):
-        Validator.gender_validator(gender)
-        self.__gender = gender
+        self.__gender = Validator.gender_validator(gender)
 
 
     @property
