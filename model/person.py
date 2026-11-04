@@ -42,7 +42,6 @@ class Person:
         Validator.national_id_validator(national_id)
         self.__national_id = national_id
 
-
     @property
     def phone(self):
         return self.__phone
@@ -59,8 +58,8 @@ class Person:
 
     @email.setter
     def email(self, email):
-        Validator.email_validator(email)
-        self.__email = email
+        self.__email = Validator.email_validator(email)
+
 
     # -------------------------------------
     # Return person information
