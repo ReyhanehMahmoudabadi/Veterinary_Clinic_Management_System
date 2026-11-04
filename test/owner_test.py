@@ -11,7 +11,7 @@ from model.owner import Owner
 
 
 # test passed
-# owner_1=Owner("ali","alipour","0110546587","09125478567",25469,"tehran")
+# owner_1=Owner("ali","alipour","0470546587","09125478567",25469,"tehran")
 # owner_2=Owner("zahra","mohseni","0120541254","09985425612",25497,"tehran")
 # owner_3=Owner("sara","moradi","0445879654","9585263456",255,"isfahan")
 # owner_da = OwnerDa()
