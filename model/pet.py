@@ -5,7 +5,7 @@ from datetime import date
 class Pet:
 
     # Initialize pet attributes
-    def __init__(self, pet_id, pet_name, species, breed, gender, birth_date, weight, microchip_number=None):
+    def __init__(self, pet_id, pet_name, species, breed, gender, birth_date, weight, owner_id, microchip_number=None):
         self.pet_id = pet_id
         self.pet_name = pet_name
         self.species = species
@@ -13,6 +13,7 @@ class Pet:
         self.gender = gender
         self.birth_date = birth_date
         self.weight = weight
+        self.owner_id = owner_id
         self.microchip_number = microchip_number
 
     # --------------------------------------------------
@@ -87,6 +88,16 @@ class Pet:
 
 
     @property
+    def owner_id(self):
+        return self.__owner_id
+
+    @owner_id.setter
+    def owner_id(self, owner_id):
+        Validator.owner_id_validator(owner_id)
+        self.__owner_id = owner_id
+
+
+    @property
     def microchip_number(self):
         return self.__microchip_number
 
@@ -101,12 +112,12 @@ class Pet:
         return (f"Pet (pet_id = {self.pet_id} , pet_name = {self.pet_name} ,"
                 f"species = {self.species} , breed = {self.breed} ,"
                 f"gender = {self.gender} , birth_date = {self.birth_date} ,"
-                f"weight = {self.weight} , microchip_number = {self.microchip_number} )")
+                f"weight = {self.weight} , owner_id = {self.owner_id} , microchip_number = {self.microchip_number} )")
 
     # --------------------------------------------------
     # Convert pet information to tuple
     def to_tuple(self):
-        return self.pet_id, self.pet_name, self.species, self.breed, self.gender, self.birth_date, self.weight, self.microchip_number
+        return self.pet_id, self.pet_name, self.species, self.breed, self.gender, self.birth_date, self.weight, self.owner_id, self.microchip_number
 
     # --------------------------------------------------
     # Calculate pet age
