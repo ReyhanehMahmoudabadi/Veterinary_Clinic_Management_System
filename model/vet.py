@@ -54,8 +54,3 @@ class Vet(Person):
     # Convert vet information to a tuple
     def to_tuple(self):
         return super().to_tuple() + (self.vet_id, self.specialization, self.license_number)
-
-    # --------------------------------------------------
-    # Display patient visit history
-    def display_patient_history(self):
-        pass
