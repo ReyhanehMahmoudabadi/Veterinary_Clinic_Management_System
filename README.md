@@ -1,8 +1,8 @@
-# Veterinary Clinic Management System
+# 🐾 Veterinary Clinic Management System
 
 A desktop application for managing veterinary clinic records, developed with Python, Tkinter, and object-oriented programming (OOP). The system provides separate interfaces for managing pet owners, veterinarians, pets, and veterinary visits.
 
-## Table of Contents
+## 📌 Table of Contents
 
 - [Overview](#overview)
 - [Important: Read Before Using](#important-read-before-using)
@@ -20,7 +20,7 @@ A desktop application for managing veterinary clinic records, developed with Pyt
 - [Author](#author)
 - [License](#license)
 
-## Overview
+## 📖 Overview
 
 The Veterinary Clinic Management System organizes four types of clinic records:
 
@@ -31,7 +31,7 @@ The Veterinary Clinic Management System organizes four types of clinic records:
 
 The code is organized into separate layers for models, data access, business logic, controllers, and views.
 
-## Important: Read Before Using
+## ⚠️ Important: Read Before Using
 
 > **Important:** Follow the data-entry order below. The application checks whether related records already exist before saving a pet or a visit. If a required record has not been registered, the save operation will be rejected.
 
@@ -50,7 +50,7 @@ The essential dependencies are:
 - A visit requires an existing pet and an existing veterinarian.
 - Owners and veterinarians do not depend on each other.
 
-## Features
+## ✨ Features
 
 - Register and view owner records.
 - Register and view veterinarian records.
@@ -61,7 +61,7 @@ The essential dependencies are:
 - Persist records between application runs using local data files.
 - Display records through Tkinter table views.
 
-## Technologies
+## 🛠️ Technologies
 
 - **Python** — application logic and data models.
 - **Tkinter / ttk** — desktop graphical user interface.
@@ -71,7 +71,7 @@ The essential dependencies are:
 
 PyCharm was used as the development environment. It is not required to run the application.
 
-## Architecture
+## 🏗️ Architecture
 
 The project uses a layered structure:
 
@@ -85,7 +85,7 @@ The project uses a layered structure:
 | `tools` | Contains shared input-validation methods. |
 | `test` | Contains test scripts for the model and business-logic functionality. |
 
-### Architecture overview
+### 🏗️ Architecture overview
 
 ```mermaid
 flowchart TD
@@ -100,7 +100,7 @@ flowchart TD
     H -.-> D
 ```
 
-## Getting Started
+## 🚀 Getting Started
 
 ### Requirements
 
@@ -120,7 +120,7 @@ git clone https://github.com/ReyhanehMahmoudabadi/Veterinary_Clinic_Management_S
 
 Alternatively, download the repository as a ZIP file and extract it.
 
-## Running the Application
+## ▶️ Running the Application
 
 Open a terminal in the project root directory (the directory containing `main.py`) and run:
 
@@ -130,7 +130,7 @@ python main.py
 
 The main window provides access to the Owners, Pets, Vets, and Visits sections. Before entering records, read the [Important: Read Before Using](#important-read-before-using) section and follow the required data-entry order.
 
-## Project Structure
+## 📂 Project Structure
 
 ```text
 Veterinary_Clinic_Management_System/
@@ -193,7 +193,7 @@ Veterinary_Clinic_Management_System/
 └── README.md
 ```
 
-## Validation Rules
+## 🔍 Validation Rules
 
 Input validation is centralized in `tools/validation.py` in the `Validator` class. The implemented rules include:
 
@@ -225,7 +225,7 @@ Input validation is centralized in `tools/validation.py` in the `Validator` clas
 
 In addition to field validation, the business-logic layer checks that record IDs are unique and that referenced owners, pets, and veterinarians exist before saving dependent records.
 
-## Data Storage
+## 💾 Data Storage
 
 The application uses Python's `pickle` module to serialize records into separate files in `data_access/data/`:
 
@@ -240,7 +240,7 @@ Run the application from the project root so the relative data-file paths resolv
 
 > **Security note:** Pickle files must only be loaded from trusted sources. Loading an untrusted or modified pickle file can execute malicious code. Do not open `.dat` files received from unknown sources.
 
-## Tests
+## 🧪 Tests
 
 The `test/` directory contains the following test scripts:
 
@@ -258,14 +258,14 @@ python -m test.owner_test
 
 Replace `owner_test` with the desired test module name to run another test. These are standalone test scripts; the project does not currently include a configured automated test runner or coverage report.
 
-## Known Limitations
+## ⚠️ Known Limitations
 
 - The current data layer uses local Pickle files rather than a database system.
 - The current business-logic layer provides record creation and retrieval; update and delete operations are not implemented in these modules.
 - The application is designed as a local desktop application and does not provide multi-user or network synchronization.
 - Data files should be backed up manually.
 
-## Future Improvements
+## 🔮 Future Improvements
 
 Potential enhancements for future versions include:
 
@@ -277,18 +277,16 @@ Potential enhancements for future versions include:
 - Add report generation and CSV/PDF export.
 - Improve error logging and exception handling.
 
-## Author
+## 👩‍💻 Author
 
 **Reyhaneh Mahmoudabadi**
 
 GitHub: [@ReyhanehMahmoudabadi](https://github.com/ReyhanehMahmoudabadi)
 
-## License
+## 📄 License
 
 No license has been specified for this repository. Unless a license is added, the project is not explicitly released for reuse, modification, or redistribution under an open-source license.
 
 ---
 
-<p align="center">
-  Made with ❤️ by <a href="https://github.com/ReyhanehMahmoudabadi">Reyhaneh Mahmoudabadi</a>
-</p>
+Developed with ❤️ using Python.
