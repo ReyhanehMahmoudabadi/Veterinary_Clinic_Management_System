@@ -22,14 +22,7 @@ A desktop application for managing veterinary clinic records, developed with Pyt
 
 ## 📖 Overview
 
-The Veterinary Clinic Management System organizes four types of clinic records:
-
-- **Owners:** stores pet owner information.
-- **Vets:** stores veterinarian information.
-- **Pets:** stores pet information and links each pet to an existing owner.
-- **Visits:** stores visit details and links each visit to an existing pet and veterinarian.
-
-The code is organized into separate layers for models, data access, business logic, controllers, and views.
+The Veterinary Clinic Management System is designed to organize the main records of a veterinary clinic. It manages pet owners and veterinarians, stores pet information linked to registered owners, and records veterinary visits associated with existing pets and veterinarians. The application is organized into separate layers for models, data access, business logic, controllers, and views.
 
 ## ⚠️ Important: Read Before Using
 
@@ -85,20 +78,6 @@ The project uses a layered structure:
 | `tools` | Contains shared input-validation methods. |
 | `test` | Contains test scripts for the model and business-logic functionality. |
 
-### 🏗️ Architecture overview
-
-```mermaid
-flowchart TD
-    A[View - Tkinter GUI] --> B[Controller]
-    B --> C[Business Logic]
-    C --> D[Data Access]
-    C --> E[Model]
-    C --> F[Tools - Validation]
-    D --> G[(Local DAT Files)]
-    H[Test Scripts] -.-> E
-    H -.-> C
-    H -.-> D
-```
 
 ## 🚀 Getting Started
 
@@ -132,66 +111,17 @@ The main window provides access to the Owners, Pets, Vets, and Visits sections. 
 
 ## 📂 Project Structure
 
-```text
-Veterinary_Clinic_Management_System/
-│
-├── business_logic/
-│   ├── __init__.py
-│   ├── owner_bl.py
-│   ├── pet_bl.py
-│   ├── vet_bl.py
-│   └── visit_bl.py
-│
-├── controller/
-│   ├── __init__.py
-│   ├── owner_controller.py
-│   ├── pet_controller.py
-│   ├── vet_controller.py
-│   └── visit_controller.py
-│
-├── data_access/
-│   ├── __init__.py
-│   ├── owner_da.py
-│   ├── pet_da.py
-│   ├── vet_da.py
-│   ├── visit_da.py
-│   └── data/
-│       ├── owner.dat
-│       ├── pet.dat
-│       ├── vet.dat
-│       └── visit.dat
-│
-├── model/
-│   ├── __init__.py
-│   ├── person.py
-│   ├── owner.py
-│   ├── pet.py
-│   ├── vet.py
-│   └── visit.py
-│
-├── test/
-│   ├── __init__.py
-│   ├── person_test.py
-│   ├── owner_test.py
-│   ├── pet_test.py
-│   ├── vet_test.py
-│   └── visit_test.py
-│
-├── tools/
-│   ├── __init__.py
-│   └── validation.py
-│
-├── view/
-│   ├── __init__.py
-│   ├── owner_view.py
-│   ├── panel_view.py
-│   ├── pet_view.py
-│   ├── vet_view.py
-│   └── visit_view.py
-│
-├── main.py
-└── README.md
-```
+The project is organized into the following main directories and files:
+
+- `business_logic/` — business rules and operations.
+- `controller/` — connects the interface to the business logic.
+- `data_access/` — data access modules and the `data/` folder for local records.
+- `model/` — application classes and data models.
+- `test/` — test scripts.
+- `tools/` — shared validation utilities.
+- `view/` — Tkinter interface windows.
+- `main.py` — application entry point.
+- `README.md` — project documentation.
 
 ## 🔍 Validation Rules
 
