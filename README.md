@@ -66,17 +66,7 @@ PyCharm was used as the development environment. It is not required to run the a
 
 ## 🏗️ Architecture
 
-The project uses a layered structure:
-
-| Layer | Responsibility |
-|---|---|
-| `model` | Defines the `Person`, `Owner`, `Vet`, `Pet`, and `Visit` classes. |
-| `data_access` | Loads and saves records in local `.dat` files. |
-| `business_logic` | Applies business rules, checks duplicate IDs, and verifies record relationships. |
-| `controller` | Connects the views to the business-logic layer. |
-| `view` | Implements the Tkinter windows and user interface. |
-| `tools` | Contains shared input-validation methods. |
-| `test` | Contains test scripts for the model and business-logic functionality. |
+The application follows a layered architecture in which each part has a separate responsibility. The `view` layer provides the Tkinter graphical interface and sends user actions to the `controller` layer. Controllers communicate with the `business_logic` layer, where application rules are applied and duplicate IDs and record relationships are checked. The business-logic layer uses the classes defined in `model` and calls the `data_access` layer to load and save records in local `.dat` files. Shared input-validation methods are provided by the `tools` package, while the `test` directory contains scripts for checking the application's classes and functionality.
 
 
 ## 🚀 Getting Started
