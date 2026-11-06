@@ -1,65 +1,168 @@
-# 🐾 Veterinary Clinic Management System
+# Veterinary Clinic Management System
 
-<p align="center">
-  A Python-based desktop application for managing veterinary clinic operations.
-</p>
+A desktop application for managing veterinary clinic records, developed with Python, Tkinter, and object-oriented programming (OOP). The system provides separate interfaces for managing pet owners, veterinarians, pets, and veterinary visits.
 
-<p align="center">
-  <img src="https://img.shields.io/badge/Python-3.x-3776AB?style=for-the-badge&logo=python&logoColor=white" />
-  <img src="https://img.shields.io/badge/GUI-Tkinter-2C8EBB?style=for-the-badge" />
-  <img src="https://img.shields.io/badge/Paradigm-OOP-6A5ACD?style=for-the-badge" />
-</p>
+## Table of Contents
 
----
+- [Overview](#overview)
+- [Important: Read Before Using](#important-read-before-using)
+- [Features](#features)
+- [Technologies](#technologies)
+- [Architecture](#architecture)
+- [Getting Started](#getting-started)
+- [Running the Application](#running-the-application)
+- [Project Structure](#project-structure)
+- [Validation Rules](#validation-rules)
+- [Data Storage](#data-storage)
+- [Tests](#tests)
+- [Known Limitations](#known-limitations)
+- [Future Improvements](#future-improvements)
+- [Author](#author)
+- [License](#license)
 
-## 📌 About The Project
+## Overview
 
-**Veterinary Clinic Management System** is a desktop application developed in Python to organize and manage essential veterinary clinic information.
+The Veterinary Clinic Management System organizes four types of clinic records:
 
-The application provides a graphical user interface for managing pet owners, pets, veterinarians, and visits. It is designed using Object-Oriented Programming (OOP) principles and a layered architecture to keep the code organized and maintainable.
+- **Owners:** stores pet owner information.
+- **Vets:** stores veterinarian information.
+- **Pets:** stores pet information and links each pet to an existing owner.
+- **Visits:** stores visit details and links each visit to an existing pet and veterinarian.
 
-## ✨ Features
+The code is organized into separate layers for models, data access, business logic, controllers, and views.
 
-- **Owner Management** – Register and manage pet owner information.
-- **Pet Management** – Add and manage pets and their owner relationships.
-- **Veterinarian Management** – Store veterinarian information and specializations.
-- **Visit Management** – Record appointments, visit details, diagnoses, and treatments.
-- **Data Validation** – Validate user inputs and prevent duplicate IDs.
-- **Relationship Validation** – Verify related pet and veterinarian records before saving visits.
-- **Graphical User Interface** – Manage records through Tkinter windows.
+## Important: Read Before Using
 
-## 🛠️ Technologies
+> **Important:** Follow the data-entry order below. The application checks whether related records already exist before saving a pet or a visit. If a required record has not been registered, the save operation will be rejected.
+
+### Required data-entry order
+
+1. **Owners** — Register the owner first. Each `Owner ID` must be unique.
+2. **Vets** — Register veterinarians. Each `Vet ID` must be unique. Owners and veterinarians can be registered independently, so either of these first two steps may come first.
+3. **Pets** — Register a pet only after its owner exists. The entered `Owner ID` must match an existing owner, and each `Pet ID` must be unique.
+4. **Visits** — Register a visit only after its pet and veterinarian exist. The entered `Pet ID` and `Vet ID` must match existing records, and each `Visit ID` must be unique.
+
+**Recommended workflow:** `Owners → Vets → Pets → Visits`
+
+The essential dependencies are:
+
+- A pet requires an existing owner.
+- A visit requires an existing pet and an existing veterinarian.
+- Owners and veterinarians do not depend on each other.
+
+## Features
+
+- Register and view owner records.
+- Register and view veterinarian records.
+- Register and view pet records linked to existing owners.
+- Register and view veterinary visits linked to existing pets and veterinarians.
+- Validate input data before saving records.
+- Prevent duplicate Owner IDs, Vet IDs, Pet IDs, and Visit IDs.
+- Persist records between application runs using local data files.
+- Display records through Tkinter table views.
+
+## Technologies
+
+- **Python** — application logic and data models.
+- **Tkinter / ttk** — desktop graphical user interface.
+- **Pickle** — serialization of Python objects for local file storage.
+- **Regular expressions (`re`)** — format validation.
+- **Git and GitHub** — version control and source-code hosting.
+
+PyCharm was used as the development environment. It is not required to run the application.
+
+## Architecture
+
+The project uses a layered structure:
+
+| Layer | Responsibility |
+|---|---|
+| `model` | Defines the `Person`, `Owner`, `Vet`, `Pet`, and `Visit` classes. |
+| `data_access` | Loads and saves records in local `.dat` files. |
+| `business_logic` | Applies business rules, checks duplicate IDs, and verifies record relationships. |
+| `controller` | Connects the views to the business-logic layer. |
+| `view` | Implements the Tkinter windows and user interface. |
+| `tools` | Contains shared input-validation methods. |
+| `test` | Contains test scripts for the model and business-logic functionality. |
+
+### Architecture overview
+
+```mermaid
+flowchart TD
+    A[View - Tkinter GUI] --> B[Controller]
+    B --> C[Business Logic]
+    C --> D[Data Access]
+    C --> E[Model]
+    C --> F[Tools - Validation]
+    D --> G[(Local DAT Files)]
+    H[Test Scripts] -.-> E
+    H -.-> C
+    H -.-> D
+```
+
+## Getting Started
+
+### Requirements
 
 - Python 3
-- Object-Oriented Programming (OOP)
-- Tkinter
-- File Handling
-- Exception Handling
+- Tkinter (usually included with standard Python installations; on some Linux distributions it may need to be installed separately)
+- The project files and the `data_access/data/` directory
 
-## 📂 Project Structure
+The application uses Python standard-library modules and does not currently require a third-party package installation.
+
+### Download the project
+
+Clone the repository:
+
+```bash
+git clone https://github.com/ReyhanehMahmoudabadi/Veterinary_Clinic_Management_System.git
+```
+
+Alternatively, download the repository as a ZIP file and extract it.
+
+## Running the Application
+
+Open a terminal in the project root directory (the directory containing `main.py`) and run:
+
+```bash
+python main.py
+```
+
+The main window provides access to the Owners, Pets, Vets, and Visits sections. Before entering records, read the [Important: Read Before Using](#important-read-before-using) section and follow the required data-entry order.
+
+## Project Structure
 
 ```text
 Veterinary_Clinic_Management_System/
 │
 ├── business_logic/
+│   ├── __init__.py
 │   ├── owner_bl.py
 │   ├── pet_bl.py
 │   ├── vet_bl.py
 │   └── visit_bl.py
 │
 ├── controller/
+│   ├── __init__.py
 │   ├── owner_controller.py
 │   ├── pet_controller.py
 │   ├── vet_controller.py
 │   └── visit_controller.py
 │
 ├── data_access/
+│   ├── __init__.py
 │   ├── owner_da.py
 │   ├── pet_da.py
 │   ├── vet_da.py
-│   └── visit_da.py
+│   ├── visit_da.py
+│   └── data/
+│       ├── owner.dat
+│       ├── pet.dat
+│       ├── vet.dat
+│       └── visit.dat
 │
 ├── model/
+│   ├── __init__.py
 │   ├── person.py
 │   ├── owner.py
 │   ├── pet.py
@@ -67,69 +170,122 @@ Veterinary_Clinic_Management_System/
 │   └── visit.py
 │
 ├── test/
+│   ├── __init__.py
+│   ├── person_test.py
 │   ├── owner_test.py
 │   ├── pet_test.py
 │   ├── vet_test.py
 │   └── visit_test.py
 │
 ├── tools/
+│   ├── __init__.py
 │   └── validation.py
 │
 ├── view/
+│   ├── __init__.py
 │   ├── owner_view.py
+│   ├── panel_view.py
 │   ├── pet_view.py
 │   ├── vet_view.py
-│   ├── visit_view.py
-│   └── panel_view.py
+│   └── visit_view.py
 │
 ├── main.py
 └── README.md
 ```
 
-## 🚀 Getting Started
+## Validation Rules
 
-### Prerequisites
+Input validation is centralized in `tools/validation.py` in the `Validator` class. The implemented rules include:
 
-- Python 3.x
-- PyCharm or another Python IDE
-
-### Installation
-
-1. Clone the repository:
-
-```bash
-git clone https://github.com/ReyhanehMahmoudabadi/Veterinary_Clinic_Management_System.git
-```
-
-2. Navigate to the project directory:
-
-```bash
-cd Veterinary_Clinic_Management_System
-```
-
-3. Run the application:
-
-```bash
-python main.py
-```
-
-## 🏗️ Application Architecture
-
-The project follows a layered architecture, separating different responsibilities:
-
-| Layer | Responsibility |
+| Field | Validation rule |
 |---|---|
-| Model | Defines application entities |
-| Data Access | Handles data storage and retrieval |
-| Business Logic | Implements business rules and validations |
-| Controller | Connects views with business logic |
-| View | Provides the graphical user interface |
-| Tools | Contains reusable utility functions |
-| Test | Contains testing modules |
+| Name | 2–30 English letters. |
+| Family name | 2–50 English letters. |
+| National ID | Exactly 10 digits. |
+| Phone number | 10 or 11 digits, matching the configured mobile-number pattern. |
+| Email | Optional; if provided, must match the configured email format. |
+| Owner ID | Positive integer. |
+| Address | 2–300 characters; supports English/Persian letters, digits, spaces, and selected punctuation. |
+| Vet ID | Positive integer. |
+| Specialization | 2–100 English letters and spaces. |
+| License number | 4–20 digits. |
+| Pet ID | 1–10 English letters or digits. |
+| Pet name | 1–30 English letters, spaces, or hyphens. |
+| Species and breed | 1–50 English letters and spaces. |
+| Gender | `Male`, `Female`, or `Unknown` (case-insensitive). |
+| Birth date | A valid `date` value that is not in the future. |
+| Weight | Positive integer or floating-point number. |
+| Microchip number | Optional; if provided, exactly 15 digits. |
+| Visit ID | `VIS-` followed by one or more digits. |
+| Visit date | A `datetime` value that is not earlier than the current date and time. |
+| Reason | 1–60 characters matching the configured English/Persian text and punctuation pattern. |
+| Status | `Scheduled`, `Completed`, `Cancelled`, or `Rescheduled` (case-insensitive). |
+| Diagnosis | 1–255 characters matching the configured letters, digits, spaces, and punctuation pattern. |
+| Treatment | 1–255 characters matching the configured letters, digits, spaces, and punctuation pattern. |
 
-## 🎯 Project Purpose
+In addition to field validation, the business-logic layer checks that record IDs are unique and that referenced owners, pets, and veterinarians exist before saving dependent records.
 
-This project was developed as a practical exercise in Python programming, Object-Oriented Design, layered architecture, data management, input validation, and GUI development.
+## Data Storage
+
+The application uses Python's `pickle` module to serialize records into separate files in `data_access/data/`:
+
+| File | Contents |
+|---|---|
+| `owner.dat` | Owner records |
+| `vet.dat` | Veterinarian records |
+| `pet.dat` | Pet records |
+| `visit.dat` | Visit records |
+
+Run the application from the project root so the relative data-file paths resolve correctly. Keep the `data_access/data/` directory in place. Back up these files before making changes to the project or its data.
+
+> **Security note:** Pickle files must only be loaded from trusted sources. Loading an untrusted or modified pickle file can execute malicious code. Do not open `.dat` files received from unknown sources.
+
+## Tests
+
+The `test/` directory contains the following test scripts:
+
+- `person_test.py`
+- `owner_test.py`
+- `pet_test.py`
+- `vet_test.py`
+- `visit_test.py`
+
+Run an individual test script from the project root, for example:
+
+```bash
+python -m test.owner_test
+```
+
+Replace `owner_test` with the desired test module name to run another test. These are standalone test scripts; the project does not currently include a configured automated test runner or coverage report.
+
+## Known Limitations
+
+- The current data layer uses local Pickle files rather than a database system.
+- The current business-logic layer provides record creation and retrieval; update and delete operations are not implemented in these modules.
+- The application is designed as a local desktop application and does not provide multi-user or network synchronization.
+- Data files should be backed up manually.
+
+## Future Improvements
+
+Potential enhancements for future versions include:
+
+- Add update and delete operations for records.
+- Add search and filtering functionality.
+- Introduce SQLite or another database system.
+- Add automated unit tests and test coverage reporting.
+- Implement data backup and recovery features.
+- Add report generation and CSV/PDF export.
+- Improve error logging and exception handling.
+
+## Author
+
+**Reyhaneh Mahmoudabadi**
+
+GitHub: [@ReyhanehMahmoudabadi](https://github.com/ReyhanehMahmoudabadi)
+
+## License
+
+No license has been specified for this repository. Unless a license is added, the project is not explicitly released for reuse, modification, or redistribution under an open-source license.
 
 ---
 
