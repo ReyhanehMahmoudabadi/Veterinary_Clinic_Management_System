@@ -317,4 +317,6 @@ No license has been specified for this project.
 
 ---
 
-Developed with ❤️ using Python.
+<p align="center">
+  Made with ❤️ by <a href="https://github.com/ReyhanehMahmoudabadi">Reyhaneh Mahmoudabadi</a>
+</p>
